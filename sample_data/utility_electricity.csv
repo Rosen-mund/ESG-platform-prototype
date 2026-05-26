@@ -1,0 +1,36 @@
+Meter ID,Service Address,Start Date,End Date,Consumption (kWh),Peak Demand (kW),Bill Type,Notes
+MTR-004,456 Industrial Ave,2025-04-01,2025-04-30,52000,138.4,ACTUAL,Recovered after meter inspection
+MTR-004,456 Industrial Ave,2025-05-01,2025-05-31,54800,142.1,ACTUAL,
+MTR-004,456 Industrial Ave,2025-06-01,2025-06-30,56300,145.2,ACTUAL,Production ramp-up
+MTR-004,456 Industrial Ave,2025-07-01,2025-07-31,57500,149.6,ACTUAL,
+MTR-004,456 Industrial Ave,2025-08-01,2025-08-31,58900,152.4,ACTUAL,Summer operational increase
+MTR-005,Research Campus,2025-01-01,2025-01-31,18.2,72.5,ACTUAL,Consumption reported in MWh
+MTR-005,Research Campus,2025-02-01,2025-02-28,,75.1,ACTUAL,Missing utility export value
+MTR-005,Research Campus,2025-03-01,2025-03-31,19400,78.3,ACTUAL,Laboratory operations expansion
+MTR-005,Research Campus,2025-04-01,2025-04-30,20100,80.4,ACTUAL,
+MTR-005,Research Campus,2025-05-01,2025-05-31,21400,84.2,ESTIMATED,Partial meter estimation
+MTR-005,Research Campus,2025-06-01,2025-06-30,-1200,0,ACTUAL,Potential reverse meter reading issue
+MTR-006,Remote Office East,2025-01-01,2025-01-31,6200,18.2,ACTUAL,Standard office usage
+MTR-006,Remote Office East,2025-02-01,2025-02-28,6050,17.9,ACTUAL,
+MTR-006,Remote Office East,2025-03-01,2025-03-31,6400,19.1,ACTUAL,
+MTR-006,Remote Office East,2025-04-01,2025-04-30,7200,22.5,ACTUAL,Seasonal cooling increase
+MTR-006,Remote Office East,2025-05-01,2025-05-31,8100,25.4,ACTUAL,
+MTR-006,Remote Office East,2025-06-01,2025-06-30,8800,28.1,ACTUAL,HVAC summer peak
+MTR-007,Warehouse Facility North,2025-01-01,2025-01-31,15400,42.1,ACTUAL,Cold storage operations
+MTR-007,Warehouse Facility North,2025-02-01,2025-02-28,14900,40.8,ACTUAL,
+MTR-007,Warehouse Facility North,2025-03-01,2025-03-31,15800,43.6,ACTUAL,
+MTR-007,Warehouse Facility North,2025-04-01,2025-04-30,16200,45.2,ACTUAL,
+MTR-007,Warehouse Facility North,2025-05-01,2025-05-31,16800,47.4,ACTUAL,
+MTR-007,Warehouse Facility North,2025-06-01,2025-06-30,170000,300,ESTIMATED,Possible refrigeration malfunction
+MTR-008,Manufacturing Unit South,2025-01-01,2025-01-31,68200,182.4,ACTUAL,Heavy machinery operations
+MTR-008,Manufacturing Unit South,2025-02-01,2025-02-28,70100,188.1,ACTUAL,
+MTR-008,Manufacturing Unit South,2025-03-01,2025-03-31,73500,194.6,ACTUAL,
+MTR-008,Manufacturing Unit South,2025-04-01,2025-04-30,74800,198.2,ACTUAL,
+MTR-008,Manufacturing Unit South,2025-05-01,2025-05-31,76000,202.5,ACTUAL,
+MTR-008,Manufacturing Unit South,2025-06-01,2025-06-30,78200,208.4,ACTUAL,Expanded production capacity
+MTR-009,Data Center West,2025-01-01,2025-01-31,94000,260.1,ACTUAL,Cloud infrastructure load
+MTR-009,Data Center West,2025-02-01,2025-02-28,95500,265.8,ACTUAL,
+MTR-009,Data Center West,2025-03-01,2025-03-31,97200,270.4,ACTUAL,
+MTR-009,Data Center West,2025-04-01,2025-04-30,99500,278.2,ACTUAL,AI workload expansion
+MTR-009,Data Center West,2025-05-01,2025-05-31,101000,282.1,ACTUAL,
+MTR-009,Data Center West,2025-06-01,2025-06-30,105500,289.6,ACTUAL,High compute demand

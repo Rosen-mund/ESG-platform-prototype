@@ -1,0 +1,401 @@
+[
+  {
+    "employee_id": "E12345",
+    "traveler_name": "John Smith",
+    "trip_type": "Flight",
+    "departure_airport": "JFK",
+    "arrival_airport": "LHR",
+    "cabin_class": "Business",
+    "departure_date": "2025-02-10"
+  },
+  {
+    "employee_id": "E12345",
+    "traveler_name": "John Smith",
+    "trip_type": "Hotel",
+    "hotel_nights": 4,
+    "departure_date": "2025-02-10"
+  },
+  {
+    "employee_id": "E67890",
+    "traveler_name": "Jane Doe",
+    "trip_type": "Flight",
+    "departure_airport": "SFO",
+    "arrival_airport": "ORD",
+    "cabin_class": "Economy",
+    "departure_date": "2025-02-20"
+  },
+  {
+    "employee_id": "E11111",
+    "traveler_name": "Bob Wilson",
+    "trip_type": "Flight",
+    "departure_airport": "LAX",
+    "arrival_airport": "SYD",
+    "cabin_class": "First",
+    "departure_date": "2025-03-01"
+  },
+  {
+  "employee_id": "E22222",
+  "traveler_name": "Alice Johnson",
+  "trip_type": "Flight",
+  "departure_airport": "CCU",
+  "arrival_airport": "BLR",
+  "cabin_class": "Economy",
+  "departure_date": "2025-03-05"
+},
+{
+  "employee_id": "E22222",
+  "traveler_name": "Alice Johnson",
+  "trip_type": "Hotel",
+  "hotel_nights": 2,
+  "departure_date": "2025-03-05"
+},
+{
+  "employee_id": "E33333",
+  "traveler_name": "Michael Chen",
+  "trip_type": "Flight",
+  "departure_airport": "SIN",
+  "arrival_airport": "LHR",
+  "cabin_class": "Business",
+  "departure_date": "2025-03-11"
+},
+{
+  "employee_id": "E44444",
+  "traveler_name": "Priya Kapoor",
+  "trip_type": "Rental Car",
+  "rental_car_days": 6,
+  "departure_date": "2025-04-02"
+},
+{
+  "employee_id": "E55555",
+  "traveler_name": "David Miller",
+  "trip_type": "Flight",
+  "departure_airport": "DEL",
+  "arrival_airport": "JFK",
+  "cabin_class": "First",
+  "departure_date": "2025-04-15"
+},
+{
+  "employee_id": "E66666",
+  "traveler_name": "Sara Lee",
+  "trip_type": "Flight",
+  "departure_airport": "",
+  "arrival_airport": "DXB",
+  "cabin_class": "Economy",
+  "departure_date": "2025-04-20"
+},
+{
+    "employee_id": "E12345",
+    "traveler_name": "John Smith",
+    "trip_type": "Rental Car",
+    "rental_car_days": 5,
+    "departure_date": "2025-02-11"
+  },
+  {
+    "employee_id": "E67890",
+    "traveler_name": "Jane Doe",
+    "trip_type": "Hotel",
+    "hotel_nights": 3,
+    "departure_date": "2025-02-20"
+  },
+  {
+    "employee_id": "E67890",
+    "traveler_name": "Jane Doe",
+    "trip_type": "Rental Car",
+    "rental_car_days": 4,
+    "departure_date": "2025-02-21"
+  },
+  {
+    "employee_id": "E11111",
+    "traveler_name": "Bob Wilson",
+    "trip_type": "Hotel",
+    "hotel_nights": 14,
+    "departure_date": "2025-03-01"
+  },
+  {
+    "employee_id": "E11111",
+    "traveler_name": "Bob Wilson",
+    "trip_type": "Rental Car",
+    "rental_car_days": 15,
+    "departure_date": "2025-03-02"
+  },
+  {
+    "employee_id": "E77777",
+    "traveler_name": "Carlos Ramirez",
+    "trip_type": "Flight",
+    "departure_airport": "MEX",
+    "arrival_airport": "BOG",
+    "cabin_class": "Economy",
+    "departure_date": "2025-05-03"
+  },
+  {
+    "employee_id": "E77777",
+    "traveler_name": "Carlos Ramirez",
+    "trip_type": "Hotel",
+    "hotel_nights": 5,
+    "departure_date": "2025-05-03"
+  },
+  {
+    "employee_id": "E88888",
+    "traveler_name": "Emma Watson",
+    "trip_type": "Flight",
+    "departure_airport": "LHR",
+    "arrival_airport": "CDG",
+    "cabin_class": "Business",
+    "departure_date": "2025-05-12"
+  },
+  {
+    "employee_id": "E88888",
+    "traveler_name": "Emma Watson",
+    "trip_type": "Hotel",
+    "hotel_nights": 2,
+    "departure_date": "2025-05-12"
+  },
+  {
+    "employee_id": "E88888",
+    "traveler_name": "Emma Watson",
+    "trip_type": "Flight",
+    "departure_airport": "CDG",
+    "arrival_airport": "LHR",
+    "cabin_class": "Business",
+    "departure_date": "2025-05-14"
+  },
+  {
+    "employee_id": "E99999",
+    "traveler_name": "Ahmed Al-Rashid",
+    "trip_type": "Flight",
+    "departure_airport": "DXB",
+    "arrival_airport": "JED",
+    "cabin_class": "First",
+    "departure_date": "2025-06-01"
+  },
+  {
+    "employee_id": "E33333",
+    "traveler_name": "Michael Chen",
+    "trip_type": "Hotel",
+    "hotel_nights": 7,
+    "departure_date": "2025-03-11"
+  },
+  {
+    "employee_id": "E33333",
+    "traveler_name": "Michael Chen",
+    "trip_type": "Rental Car",
+    "rental_car_days": 8,
+    "departure_date": "2025-03-12"
+  },
+  {
+    "employee_id": "E10101",
+    "traveler_name": "Olga Petrova",
+    "trip_type": "Flight",
+    "departure_airport": "SVO",
+    "arrival_airport": "IST",
+    "cabin_class": "Economy",
+    "departure_date": "2025-06-15"
+  },
+  {
+    "employee_id": "E10101",
+    "traveler_name": "Olga Petrova",
+    "trip_type": "Hotel",
+    "hotel_nights": 0,
+    "departure_date": "2025-06-15"
+  },
+  {
+    "employee_id": "E20202",
+    "traveler_name": "Takeshi Yamamoto",
+    "trip_type": "Flight",
+    "departure_airport": "NRT",
+    "arrival_airport": "SIN",
+    "cabin_class": "Business",
+    "departure_date": "2025-07-01"
+  },
+  {
+    "employee_id": "E20202",
+    "traveler_name": "Takeshi Yamamoto",
+    "trip_type": "Flight",
+    "departure_airport": "SIN",
+    "arrival_airport": "SYD",
+    "cabin_class": "Business",
+    "departure_date": "2025-07-05"
+  },
+  {
+    "employee_id": "E20202",
+    "traveler_name": "Takeshi Yamamoto",
+    "trip_type": "Hotel",
+    "hotel_nights": 10,
+    "departure_date": "2025-07-01"
+  },
+  {
+    "employee_id": "E30303",
+    "traveler_name": "Fatima Okafor",
+    "trip_type": "Flight",
+    "departure_airport": "LOS",
+    "arrival_airport": "ADD",
+    "cabin_class": "Economy",
+    "departure_date": "2025-08-10"
+  },
+  {
+    "employee_id": "E30303",
+    "traveler_name": "Fatima Okafor",
+    "trip_type": "Rental Car",
+    "rental_car_days": -1,
+    "departure_date": "2025-08-10"
+  },
+  {
+    "employee_id": "E40404",
+    "traveler_name": "Liam O'Brien",
+    "trip_type": "Flight",
+    "departure_airport": "DUB",
+    "arrival_airport": "JFK",
+    "cabin_class": "Economy",
+    "departure_date": "2025-09-01"
+  },
+  {
+    "employee_id": "E55555",
+    "traveler_name": "David Miller",
+    "trip_type": "Hotel",
+    "hotel_nights": 8,
+    "departure_date": "2025-04-15"
+  },
+  {
+    "employee_id": "E55555",
+    "traveler_name": "David Miller",
+    "trip_type": "Rental Car",
+    "rental_car_days": 9,
+    "departure_date": "2025-04-16"
+  },
+  {
+    "employee_id": "E66666",
+    "traveler_name": "Sara Lee",
+    "trip_type": "Hotel",
+    "hotel_nights": 4,
+    "departure_date": "2025-04-20"
+  },
+  {
+    "employee_id": "E50505",
+    "traveler_name": "Chen Wei",
+    "trip_type": "Flight",
+    "departure_airport": "PVG",
+    "arrival_airport": "ICN",
+    "cabin_class": "Premium Economy",
+    "departure_date": "2025-10-05"
+  },
+  {
+    "employee_id": "E60606",
+    "traveler_name": "Maria Santos",
+    "trip_type": "Rental Car",
+    "rental_car_days": 3,
+    "departure_date": "2025-11-12"
+  },
+  {
+    "employee_id": "E70707",
+    "traveler_name": "James O'Neil",
+    "trip_type": "Hotel",
+    "hotel_nights": 21,
+    "departure_date": "2025-12-01"
+  },
+  {
+    "employee_id": "E80808",
+    "traveler_name": "Aisha Patel",
+    "trip_type": "Flight",
+    "departure_airport": "BOM",
+    "arrival_airport": "SIN",
+    "cabin_class": "",
+    "departure_date": "2026-01-10"
+  },
+  {
+    "employee_id": "E90909",
+    "traveler_name": "Robert Keller",
+    "trip_type": "Flight",
+    "departure_airport": "FRA",
+    "arrival_airport": "GRU",
+    "cabin_class": "Business",
+    "departure_date": "2026-02-14"
+  },
+  {
+    "employee_id": "E90909",
+    "traveler_name": "Robert Keller",
+    "trip_type": "Hotel",
+    "hotel_nights": 6,
+    "departure_date": "2026-02-14"
+  }
+  ,
+{
+  "employee_id": "E90909",
+  "traveler_name": "Robert Keller",
+  "trip_type": "Hotel",
+  "hotel_nights": 6,
+  "departure_date": "2026-02-14"
+},
+{
+  "employee_id": "E11111",
+  "traveler_name": "Bob Wilson",
+  "trip_type": "Hotel",
+  "hotel_nights": 45,
+  "departure_date": "2025-03-01"
+},
+{
+  "employee_id": "E12121",
+  "traveler_name": "Sophia Martinez",
+  "trip_type": "Flight",
+  "departure_airport": "MAD",
+  "arrival_airport": "AMS",
+  "cabin_class": "Economy",
+  "departure_date": "15/03/2025"
+},
+{
+  "employee_id": "E13131",
+  "traveler_name": "Noah Kim",
+  "trip_type": "Flight",
+  "departure_airport": "ICN",
+  "arrival_airport": "HKG",
+  "cabin_class": "Business",
+  "departure_date": "2025/04/12"
+},
+{
+  "employee_id": "E14141",
+  "traveler_name": "Isabella Rossi",
+  "trip_type": "Hotel",
+  "hotel_nights": 12,
+  "departure_date": "2025-09-20"
+},
+{
+  "employee_id": "E15151",
+  "traveler_name": "George Brown",
+  "trip_type": "Rental Car",
+  "rental_car_days": 0,
+  "departure_date": "2025-10-11"
+},
+{
+  "employee_id": "E16161",
+  "traveler_name": "Yuki Tanaka",
+  "trip_type": "Flight",
+  "departure_airport": "NRT",
+  "arrival_airport": "LAX",
+  "cabin_class": "First",
+  "departure_date": "2025-11-03"
+},
+{
+  "employee_id": "E16161",
+  "traveler_name": "Yuki Tanaka",
+  "trip_type": "Hotel",
+  "hotel_nights": 9,
+  "departure_date": "2025-11-03"
+},
+{
+  "employee_id": "E17171",
+  "traveler_name": "Amara Ndlovu",
+  "trip_type": "Flight",
+  "departure_airport": "JNB",
+  "arrival_airport": "DXB",
+  "cabin_class": "Economy",
+  "departure_date": "2025-12-18"
+},
+{
+  "employee_id": "E18181",
+  "traveler_name": "Lucas Ferreira",
+  "trip_type": "Flight",
+  "departure_airport": "GRU",
+  "arrival_airport": "MIA",
+  "cabin_class": "Premium Economy",
+  "departure_date": "2026-01-07"
+}
+]

@@ -45,6 +45,18 @@ These fields were chosen because they were sufficient to support:
 - normalization workflows
 - suspicious record review
 - dashboard aggregation
+  
+### File Format Choice
+
+SAP-style procurement datasets were modeled as CSV files because ERP procurement exports are commonly distributed as tabular spreadsheet or CSV-based reporting extracts.
+
+CSV ingestion also simplified:
+- row-based normalization
+- transactional parsing
+- bulk upload workflows
+- analytical aggregation
+
+The structure aligned naturally with procurement-style tabular records containing vendors, quantities, categories, and transaction metadata.
 
 ### What Would Break in Real Deployments
 
@@ -91,6 +103,18 @@ These fields were sufficient to support:
 - suspicious record detection
 - organization-level dashboard aggregation
 
+### File Format Choice
+
+Utility consumption datasets were modeled as CSV files because energy usage reports are commonly exported as tabular billing or meter-consumption reports.
+
+CSV-based ingestion simplified:
+- periodic consumption parsing
+- facility-level aggregation
+- unit normalization
+- dashboard analytics workflows
+
+The tabular structure aligned well with recurring utility reporting patterns such as monthly consumption records and billing periods.
+
 ### What Would Break in Real Deployments
 
 A production-scale utility ingestion workflow would likely require handling:
@@ -135,6 +159,19 @@ These fields were sufficient to support:
 - normalized emissions workflows
 - suspicious record review
 - dashboard analytics
+
+### File Format Choice
+
+Travel emissions datasets were modeled using JSON because travel-related activity data is often more hierarchical and event-oriented than utility or procurement reporting.
+
+JSON structures provided greater flexibility for representing:
+- trip metadata
+- travel segments
+- destinations
+- transportation types
+- nested travel activity details
+
+Using JSON also helped simulate ingestion workflows where travel data may originate from APIs or external travel management systems instead of flat reporting exports.
 
 ### What Would Break in Real Deployments
 

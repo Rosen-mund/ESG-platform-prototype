@@ -7,13 +7,7 @@ The prototype supports three ESG-related source categories:
 - Utility consumption datasets
 - Travel emissions datasets
 
-Because real-world ESG ingestion systems vary significantly across organizations and reporting standards, the prototype focuses on a simplified but structurally representative subset of fields required for normalization, scope categorization, suspicious record review, and dashboard analytics.
-
-The following sections describe:
-- the real-world source formats researched
-- the ingestion assumptions made
-- the sample dataset structures used
-- limitations that would likely appear in production deployments
+Because real-world ESG ingestion systems vary significantly across organizations and reporting standards, the prototype is built mainly focusing on a simplified but structurally representative subset of fields required for normalization, scope categorization, suspicious record review, and dashboard analytics.
 
 ## SAP Procurement Dataset
 

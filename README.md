@@ -98,6 +98,13 @@ frontend/
 
 ## Setup Instructions
 
+## Clone Repository
+
+```bash
+git clone https://github.com/Rosen-mund/ESG-platform-prototype.git
+
+```
+
 ### Backend Setup
 
 ```bash

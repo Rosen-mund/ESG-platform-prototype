@@ -31,6 +31,48 @@ function Topbar({
     toggleTheme
   } = useTheme();
 
+  const handleOrganizationChange = (
+    e
+  ) => {
+
+    const value =
+      e.target.value;
+
+    if (
+      value === "add_new"
+    ) {
+
+      navigate(
+        "/organizations"
+      );
+
+      return;
+    }
+
+    const orgExists =
+      organizations.some(
+        (org) =>
+          org.id === value
+      );
+
+    if (!orgExists) {
+
+      localStorage.removeItem(
+        "selectedOrg"
+      );
+
+      return;
+    }
+
+    setSelectedOrg(value);
+
+    localStorage.setItem(
+      "selectedOrg",
+      value
+    );
+
+  };
+
   return (
 
     <header className="
@@ -122,30 +164,9 @@ function Topbar({
 
           value={selectedOrg}
 
-          onChange={(e) => {
-
-            if (
-              e.target.value ===
-              "add_new"
-            ) {
-
-              navigate(
-                "/organizations"
-              );
-
-              return;
-            }
-
-            setSelectedOrg(
-              e.target.value
-            );
-
-            localStorage.setItem(
-              "selectedOrg",
-              e.target.value
-            );
-
-          }}
+          onChange={
+            handleOrganizationChange
+          }
 
           className="
             bg-zinc-100
@@ -169,18 +190,20 @@ function Topbar({
           "
         >
 
-          {organizations.map((org) => (
+          {
+            organizations.map((org) => (
 
-            <option
-              key={org.id}
-              value={org.id}
-            >
+              <option
+                key={org.id}
+                value={org.id}
+              >
 
-              {org.name}
+                {org.name}
 
-            </option>
+              </option>
 
-          ))}
+            ))
+          }
 
           <option value="add_new">
 
@@ -209,11 +232,12 @@ function Topbar({
           "
         >
 
-          {theme === "dark"
+          {
+            theme === "dark"
 
-            ? <Sun size={18} />
+              ? <Sun size={18} />
 
-            : <Moon size={18} />
+              : <Moon size={18} />
           }
 
         </button>

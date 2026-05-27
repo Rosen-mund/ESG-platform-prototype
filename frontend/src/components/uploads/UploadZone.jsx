@@ -1,6 +1,10 @@
-import { useCallback, useState } from "react";
+import {
+  useCallback,
+  useState
+} from "react";
 
-import { useDropzone } from "react-dropzone";
+import { useDropzone }
+from "react-dropzone";
 
 import {
   UploadCloud,
@@ -9,12 +13,16 @@ import {
   AlertCircle
 } from "lucide-react";
 
-import { motion } from "framer-motion";
+import { motion }
+from "framer-motion";
 
-import api from "../../services/api";
+import api
+from "../../services/api";
 
 
-function UploadZone({onUploadSuccess}) {
+function UploadZone({
+  onUploadSuccess
+}) {
 
   const [fileName, setFileName] =
     useState("");
@@ -32,18 +40,39 @@ function UploadZone({onUploadSuccess}) {
     file
   ) => {
 
-    const formData = new FormData();
+    const selectedOrg =
+      localStorage.getItem(
+        "selectedOrg"
+      );
 
-    formData.append("file", file);
+    if (!selectedOrg) {
+
+      setError(
+        "Please select or create an organization before uploading."
+      );
+
+      setUploading(false);
+
+      return;
+    }
+
+    const formData =
+      new FormData();
+
+    formData.append(
+      "file",
+      file
+    );
 
     formData.append(
       "uploaded_by",
       "Frontend User"
     );
+
     formData.append(
-    "organization_id",
-    localStorage.getItem("selectedOrg")
-  );
+      "organization_id",
+      selectedOrg
+    );
 
     try {
 
@@ -86,18 +115,42 @@ function UploadZone({onUploadSuccess}) {
       );
 
       setSuccess(true);
+
+      setError("");
+
       if (onUploadSuccess) {
 
         onUploadSuccess();
 
       }
+
     } catch (err) {
 
       console.error(err);
 
       console.error(
-      err.response?.data || err
-    );
+        err.response?.data || err
+      );
+
+      if (
+        err.response?.status === 400
+      ) {
+
+        setError(
+          "Invalid organization selected. Please refresh and select a valid organization."
+        );
+
+        localStorage.removeItem(
+          "selectedOrg"
+        );
+
+      } else {
+
+        setError(
+          "Upload failed. Please try again."
+        );
+
+      }
 
     } finally {
 
@@ -110,7 +163,8 @@ function UploadZone({onUploadSuccess}) {
   const onDrop = useCallback(
     async (acceptedFiles) => {
 
-      const file = acceptedFiles[0];
+      const file =
+        acceptedFiles[0];
 
       if (!file) return;
 

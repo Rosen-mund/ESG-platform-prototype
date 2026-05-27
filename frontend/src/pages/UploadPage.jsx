@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 
-import DashboardLayout from "../layouts/DashboardLayout";
+import DashboardLayout
+from "../layouts/DashboardLayout";
 
-import UploadZone from "../components/uploads/UploadZone";
+import UploadZone
+from "../components/uploads/UploadZone";
 
-import UploadsTable from "../components/uploads/UploadsTable";
+import UploadsTable
+from "../components/uploads/UploadsTable";
 
-import api from "../services/api";
+import api
+from "../services/api";
 
 
 function UploadsPage() {
@@ -15,11 +19,11 @@ function UploadsPage() {
     useState([]);
 
   const [selectedOrg, setSelectedOrg] =
-  useState(
-    localStorage.getItem(
-      "selectedOrg"
-    ) || ""
-  );
+    useState(
+      localStorage.getItem(
+        "selectedOrg"
+      ) || ""
+    );
 
   const [uploads, setUploads] =
     useState([]);
@@ -51,25 +55,44 @@ function UploadsPage() {
       setOrganizations(response.data);
 
       if (
-  response.data.length > 0 &&
-  !localStorage.getItem(
-    "selectedOrg"
-  )
-) {
+        response.data.length === 0
+      ) {
 
-  const defaultOrg =
-    response.data[0].id;
+        localStorage.removeItem(
+          "selectedOrg"
+        );
 
-  setSelectedOrg(
-    defaultOrg
-  );
+        setSelectedOrg("");
 
-  localStorage.setItem(
-    "selectedOrg",
-    defaultOrg
-  );
+        return;
+      }
 
-}
+      const storedOrg =
+        localStorage.getItem(
+          "selectedOrg"
+        );
+
+      const orgExists =
+        response.data.some(
+          (org) =>
+            org.id === storedOrg
+        );
+
+      if (!orgExists) {
+
+        const defaultOrg =
+          response.data[0].id;
+
+        setSelectedOrg(
+          defaultOrg
+        );
+
+        localStorage.setItem(
+          "selectedOrg",
+          defaultOrg
+        );
+
+      }
 
     } catch (error) {
 
@@ -138,15 +161,68 @@ function UploadsPage() {
 
         </div>
 
-        <UploadZone
-        onUploadSuccess={() =>
-            fetchUploads(selectedOrg)
-        }
-        />
+        {
+          organizations.length === 0 ? (
 
-        <UploadsTable
-          uploads={uploads}
-        />
+            <div className="
+              rounded-3xl
+
+              border
+              border-zinc-200
+              dark:border-zinc-800
+
+              bg-white
+              dark:bg-zinc-900
+
+              p-12
+
+              text-center
+
+              shadow-xl
+            ">
+
+              <h2 className="
+                text-3xl
+                font-bold
+              ">
+
+                No Organizations Found
+
+              </h2>
+
+              <p className="
+                mt-4
+
+                text-zinc-500
+                dark:text-zinc-400
+
+                max-w-2xl
+                mx-auto
+              ">
+
+                Create an organization first
+                before uploading ESG datasets
+                and monitoring ingestion activity.
+
+              </p>
+
+            </div>
+
+          ) : (
+
+            <>
+              <UploadZone
+                onUploadSuccess={() =>
+                  fetchUploads(selectedOrg)
+                }
+              />
+
+              <UploadsTable
+                uploads={uploads}
+              />
+            </>
+          )
+        }
 
       </div>
 

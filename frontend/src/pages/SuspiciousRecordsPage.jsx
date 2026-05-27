@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-import DashboardLayout from "../layouts/DashboardLayout";
+import DashboardLayout
+from "../layouts/DashboardLayout";
 
 import SuspiciousRecordsTable
 from "../components/suspicious/SuspiciousRecordsTable";
@@ -8,7 +9,8 @@ from "../components/suspicious/SuspiciousRecordsTable";
 import RecordDetailsModal
 from "../components/suspicious/RecordDetailsModal";
 
-import api from "../services/api";
+import api
+from "../services/api";
 
 
 function SuspiciousRecordsPage() {
@@ -58,11 +60,30 @@ function SuspiciousRecordsPage() {
       setOrganizations(response.data);
 
       if (
-        response.data.length > 0 &&
-        !localStorage.getItem(
-          "selectedOrg"
-        )
+        response.data.length === 0
       ) {
+
+        localStorage.removeItem(
+          "selectedOrg"
+        );
+
+        setSelectedOrg("");
+
+        return;
+      }
+
+      const storedOrg =
+        localStorage.getItem(
+          "selectedOrg"
+        );
+
+      const orgExists =
+        response.data.some(
+          (org) =>
+            org.id === storedOrg
+        );
+
+      if (!orgExists) {
 
         const defaultOrg =
           response.data[0].id;
@@ -171,19 +192,71 @@ function SuspiciousRecordsPage() {
 
         </div>
 
-        <SuspiciousRecordsTable
+        {
+          organizations.length === 0 ? (
 
-          records={records}
+            <div className="
+              rounded-3xl
 
-          onStatusUpdate={
-            updateRecordStatus
-          }
+              border
+              border-zinc-200
+              dark:border-zinc-800
 
-          onViewDetails={
-            setSelectedRecord
-          }
+              bg-white
+              dark:bg-zinc-900
 
-        />
+              p-12
+
+              text-center
+
+              shadow-xl
+            ">
+
+              <h2 className="
+                text-3xl
+                font-bold
+              ">
+
+                No Organizations Found
+
+              </h2>
+
+              <p className="
+                mt-4
+
+                text-zinc-500
+                dark:text-zinc-400
+
+                max-w-2xl
+                mx-auto
+              ">
+
+                Create an organization first
+                before reviewing suspicious
+                ESG emission records.
+
+              </p>
+
+            </div>
+
+          ) : (
+
+            <SuspiciousRecordsTable
+
+              records={records}
+
+              onStatusUpdate={
+                updateRecordStatus
+              }
+
+              onViewDetails={
+                setSelectedRecord
+              }
+
+            />
+
+          )
+        }
 
       </div>
 

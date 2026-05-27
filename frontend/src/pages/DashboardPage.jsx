@@ -84,11 +84,31 @@ function DashboardPage() {
       setOrganizations(response.data);
 
       if (
-        response.data.length > 0 &&
-        !localStorage.getItem(
-          "selectedOrg"
-        )
+        response.data.length === 0
       ) {
+
+        localStorage.removeItem(
+          "selectedOrg"
+        );
+
+        setSelectedOrg("");
+
+        return;
+
+      }
+
+      const storedOrg =
+        localStorage.getItem(
+          "selectedOrg"
+        );
+
+      const orgExists =
+        response.data.some(
+          (org) =>
+            org.id === storedOrg
+        );
+
+      if (!orgExists) {
 
         const defaultOrg =
           response.data[0].id;

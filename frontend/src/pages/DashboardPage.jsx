@@ -1,16 +1,24 @@
 import { useEffect, useState } from "react";
 
-import { Link } from "react-router-dom";
+import {
+  Link,
+  useNavigate
+} from "react-router-dom";
 
-import DashboardLayout from "../layouts/DashboardLayout";
+import DashboardLayout
+from "../layouts/DashboardLayout";
 
-import KpiCard from "../components/dashboard/KpiCard";
+import KpiCard
+from "../components/dashboard/KpiCard";
 
-import SourceBreakdownChart from "../components/dashboard/SourceBreakdownChart";
+import SourceBreakdownChart
+from "../components/dashboard/SourceBreakdownChart";
 
-import ScopeBreakdownChart from "../components/dashboard/ScopeBreakdownChart";
+import ScopeBreakdownChart
+from "../components/dashboard/ScopeBreakdownChart";
 
-import RecentUploadsTable from "../components/dashboard/RecentUploadsTable";
+import RecentUploadsTable
+from "../components/dashboard/RecentUploadsTable";
 
 import api from "../services/api";
 
@@ -23,6 +31,8 @@ import {
 
 
 function DashboardPage() {
+
+  const navigate = useNavigate();
 
   const [summary, setSummary] =
     useState(null);
@@ -37,11 +47,11 @@ function DashboardPage() {
     useState([]);
 
   const [selectedOrg, setSelectedOrg] =
-  useState(
-    localStorage.getItem(
-      "selectedOrg"
-    ) || ""
-  );
+    useState(
+      localStorage.getItem(
+        "selectedOrg"
+      ) || ""
+    );
 
   useEffect(() => {
 
@@ -73,21 +83,26 @@ function DashboardPage() {
 
       setOrganizations(response.data);
 
-      if ( response.data.length > 0 &&!localStorage.getItem("selectedOrg")) {
+      if (
+        response.data.length > 0 &&
+        !localStorage.getItem(
+          "selectedOrg"
+        )
+      ) {
 
         const defaultOrg =
-            response.data[0].id;
+          response.data[0].id;
 
         setSelectedOrg(
-            defaultOrg
+          defaultOrg
         );
 
         localStorage.setItem(
-            "selectedOrg",
-            defaultOrg
+          "selectedOrg",
+          defaultOrg
         );
 
-}
+      }
 
     } catch (error) {
 
@@ -176,27 +191,31 @@ function DashboardPage() {
       title: "Total Uploads",
       value: summary?.total_uploads || 0,
       icon: Database,
-      color: "bg-cyan-500/20 text-cyan-400"
+      color:
+        "bg-cyan-500/20 text-cyan-400"
     },
     {
       title: "Organizations",
       value: organizations.length,
       icon: Building2,
-      color: "bg-emerald-500/20 text-emerald-400"
+      color:
+        "bg-emerald-500/20 text-emerald-400"
     },
     {
       title: "Suspicious Records",
       value:
         summary?.suspicious_records || 0,
       icon: AlertTriangle,
-      color: "bg-red-500/20 text-red-400"
+      color:
+        "bg-red-500/20 text-red-400"
     },
     {
       title: "Emission Records",
       value:
         summary?.total_normalized_records || 0,
       icon: BarChart3,
-      color: "bg-purple-500/20 text-purple-400"
+      color:
+        "bg-purple-500/20 text-purple-400"
     }
   ];
 
@@ -233,305 +252,416 @@ function DashboardPage() {
             text-lg
           ">
 
-            Monitor ESG ingestion and emissions activity
+            Monitor ESG ingestion
+            and emissions activity
 
           </p>
 
         </div>
 
-        <div className="
-          grid
-          grid-cols-1
-          md:grid-cols-2
-          xl:grid-cols-4
-          gap-6
-        ">
+        {
+          organizations.length === 0 && (
 
-          {stats.map((item, index) => (
-
-            <KpiCard
-              key={index}
-              title={item.title}
-              value={item.value}
-              icon={item.icon}
-              color={item.color}
-            />
-
-          ))}
-
-        </div>
-
-        <div className="
-          grid
-          grid-cols-1
-          xl:grid-cols-2
-          gap-6
-        ">
-
-          <SourceBreakdownChart
-            data={
-              summary?.source_breakdown || []
-            }
-          />
-
-          <ScopeBreakdownChart
-            data={
-              summary?.scope_breakdown || []
-            }
-          />
-
-        </div>
-
-        <RecentUploadsTable
-          uploads={recentUploads}
-        />
-
-        <div className="
-          rounded-3xl
-
-          border
-          border-zinc-200
-          dark:border-zinc-800
-
-          bg-white/80
-          dark:bg-zinc-900/70
-
-          backdrop-blur-xl
-
-          shadow-lg
-
-          overflow-hidden
-
-          transition-all
-          duration-500
-        ">
-
-          <div className="
-            p-6
-
-            border-b
-            border-zinc-200
-            dark:border-zinc-800
-
-            flex
-            items-center
-            justify-between
-          ">
-
-            <div>
-
-              <h2 className="
-                text-2xl
-                font-semibold
-                tracking-tight
-              ">
-
-                Suspicious Records
-
-              </h2>
-
-              <p className="
-                text-zinc-500
-                dark:text-zinc-400
-
-                text-sm
-                mt-1
-              ">
-
-                Recently flagged anomalies
-
-              </p>
-
-            </div>
-
-            <Link
-              to="/suspicious-records"
+            <div
               className="
-                text-sm
-                text-emerald-500
-                dark:text-emerald-400
+                rounded-3xl
 
-                hover:text-emerald-400
-                dark:hover:text-emerald-300
+                border
+                border-zinc-200
+                dark:border-zinc-800
 
-                transition-colors
+                bg-white
+                dark:bg-zinc-900
+
+                p-12
+
+                flex
+                flex-col
+                items-center
+                justify-center
+
+                text-center
+
+                shadow-xl
               "
             >
 
-              View All →
+              <h2
+                className="
+                  text-3xl
+                  font-bold
+                "
+              >
 
-            </Link>
+                No Organizations Found
 
-          </div>
+              </h2>
 
-          <div className="overflow-x-auto">
+              <p
+                className="
+                  mt-4
 
-            <table className="
-              w-full
-              text-sm
-            ">
+                  text-zinc-500
+                  dark:text-zinc-400
 
-              <thead className="
-                bg-zinc-100/80
-                dark:bg-zinc-800/40
+                  max-w-2xl
+                  text-lg
+                "
+              >
 
-                text-zinc-500
-                dark:text-zinc-400
+                Create your first ESG
+                organization to begin
+                uploading sustainability
+                data, reviewing suspicious
+                records, and monitoring
+                emissions analytics.
+
+              </p>
+
+              <button
+
+                onClick={() =>
+                  navigate(
+                    "/organizations"
+                  )
+                }
+
+                className="
+                  mt-8
+
+                  px-6
+                  py-3
+
+                  rounded-2xl
+
+                  bg-gradient-to-r
+                  from-emerald-500
+                  to-cyan-500
+
+                  text-white
+                  font-medium
+
+                  hover:scale-105
+
+                  transition-all
+                  duration-300
+
+                  shadow-lg
+                "
+              >
+
+                Create First Organization
+
+              </button>
+
+            </div>
+          )
+        }
+
+        {
+          organizations.length > 0 && (
+            <>
+
+              <div className="
+                grid
+                grid-cols-1
+                md:grid-cols-2
+                xl:grid-cols-4
+                gap-6
               ">
 
-                <tr>
+                {stats.map((
+                  item,
+                  index
+                ) => (
 
-                  <th className="
-                    px-6
-                    py-4
-                    text-left
-                    font-medium
-                  ">
-                    Source
-                  </th>
+                  <KpiCard
+                    key={index}
+                    title={item.title}
+                    value={item.value}
+                    icon={item.icon}
+                    color={item.color}
+                  />
 
-                  <th className="
-                    px-6
-                    py-4
-                    text-left
-                    font-medium
-                  ">
-                    Scope
-                  </th>
+                ))}
 
-                  <th className="
-                    px-6
-                    py-4
-                    text-left
-                    font-medium
-                  ">
-                    Quantity
-                  </th>
+              </div>
 
-                  <th className="
-                    px-6
-                    py-4
-                    text-left
-                    font-medium
-                  ">
-                    Status
-                  </th>
+              <div className="
+                grid
+                grid-cols-1
+                xl:grid-cols-2
+                gap-6
+              ">
 
-                </tr>
+                <SourceBreakdownChart
+                  data={
+                    summary?.source_breakdown || []
+                  }
+                />
 
-              </thead>
+                <ScopeBreakdownChart
+                  data={
+                    summary?.scope_breakdown || []
+                  }
+                />
 
-              <tbody>
+              </div>
 
-                {suspiciousRecords
-                  .slice(0, 3)
-                  .map((record) => (
+              <RecentUploadsTable
+                uploads={recentUploads}
+              />
 
-                  <tr
-                    key={record.id}
+              <div className="
+                rounded-3xl
+
+                border
+                border-zinc-200
+                dark:border-zinc-800
+
+                bg-white/80
+                dark:bg-zinc-900/70
+
+                backdrop-blur-xl
+
+                shadow-lg
+
+                overflow-hidden
+
+                transition-all
+                duration-500
+              ">
+
+                <div className="
+                  p-6
+
+                  border-b
+                  border-zinc-200
+                  dark:border-zinc-800
+
+                  flex
+                  items-center
+                  justify-between
+                ">
+
+                  <div>
+
+                    <h2 className="
+                      text-2xl
+                      font-semibold
+                      tracking-tight
+                    ">
+
+                      Suspicious Records
+
+                    </h2>
+
+                    <p className="
+                      text-zinc-500
+                      dark:text-zinc-400
+
+                      text-sm
+                      mt-1
+                    ">
+
+                      Recently flagged anomalies
+
+                    </p>
+
+                  </div>
+
+                  <Link
+                    to="/suspicious-records"
                     className="
-                      border-b
-                      border-zinc-100
-                      dark:border-zinc-800
+                      text-sm
+                      text-emerald-500
+                      dark:text-emerald-400
 
-                      hover:bg-emerald-500/5
-                      dark:hover:bg-zinc-800/30
+                      hover:text-emerald-400
+                      dark:hover:text-emerald-300
 
                       transition-colors
                     "
                   >
 
-                    <td className="px-6 py-5">
+                    View All →
 
-                      <span className="
-                        px-3
-                        py-1.5
-                        rounded-full
-                        text-xs
+                  </Link>
 
-                        bg-cyan-500/10
-                        text-cyan-500
-                        dark:text-cyan-400
+                </div>
 
-                        border
-                        border-cyan-500/20
-                      ">
+                <div className="overflow-x-auto">
 
-                        {record.source_type}
+                  <table className="
+                    w-full
+                    text-sm
+                  ">
 
-                      </span>
+                    <thead className="
+                      bg-zinc-100/80
+                      dark:bg-zinc-800/40
 
-                    </td>
-
-                    <td className="px-6 py-5">
-
-                      <span className="
-                        px-3
-                        py-1.5
-                        rounded-full
-                        text-xs
-
-                        bg-emerald-500/10
-                        text-emerald-500
-                        dark:text-emerald-400
-
-                        border
-                        border-emerald-500/20
-                      ">
-
-                        {record.scope}
-
-                      </span>
-
-                    </td>
-
-                    <td className="
-                      px-6
-                      py-5
-
-                      font-medium
-
-                      text-zinc-800
-                      dark:text-zinc-200
+                      text-zinc-500
+                      dark:text-zinc-400
                     ">
 
-                      {record.quantity}
+                      <tr>
 
-                    </td>
+                        <th className="
+                          px-6
+                          py-4
+                          text-left
+                          font-medium
+                        ">
+                          Source
+                        </th>
 
-                    <td className="px-6 py-5">
+                        <th className="
+                          px-6
+                          py-4
+                          text-left
+                          font-medium
+                        ">
+                          Scope
+                        </th>
 
-                      <span className="
-                        px-3
-                        py-1.5
-                        rounded-full
-                        text-xs
+                        <th className="
+                          px-6
+                          py-4
+                          text-left
+                          font-medium
+                        ">
+                          Quantity
+                        </th>
 
-                        bg-red-500/10
-                        text-red-500
-                        dark:text-red-400
+                        <th className="
+                          px-6
+                          py-4
+                          text-left
+                          font-medium
+                        ">
+                          Status
+                        </th>
 
-                        border
-                        border-red-500/20
-                      ">
+                      </tr>
 
-                        {record.status}
+                    </thead>
 
-                      </span>
+                    <tbody>
 
-                    </td>
+                      {suspiciousRecords
+                        .slice(0, 3)
+                        .map((record) => (
 
-                  </tr>
+                        <tr
+                          key={record.id}
+                          className="
+                            border-b
+                            border-zinc-100
+                            dark:border-zinc-800
 
-                ))}
+                            hover:bg-emerald-500/5
+                            dark:hover:bg-zinc-800/30
 
-              </tbody>
+                            transition-colors
+                          "
+                        >
 
-            </table>
+                          <td className="px-6 py-5">
 
-          </div>
+                            <span className="
+                              px-3
+                              py-1.5
+                              rounded-full
+                              text-xs
 
-        </div>
+                              bg-cyan-500/10
+                              text-cyan-500
+                              dark:text-cyan-400
+
+                              border
+                              border-cyan-500/20
+                            ">
+
+                              {record.source_type}
+
+                            </span>
+
+                          </td>
+
+                          <td className="px-6 py-5">
+
+                            <span className="
+                              px-3
+                              py-1.5
+                              rounded-full
+                              text-xs
+
+                              bg-emerald-500/10
+                              text-emerald-500
+                              dark:text-emerald-400
+
+                              border
+                              border-emerald-500/20
+                            ">
+
+                              {record.scope}
+
+                            </span>
+
+                          </td>
+
+                          <td className="
+                            px-6
+                            py-5
+
+                            font-medium
+
+                            text-zinc-800
+                            dark:text-zinc-200
+                          ">
+
+                            {record.quantity}
+
+                          </td>
+
+                          <td className="px-6 py-5">
+
+                            <span className="
+                              px-3
+                              py-1.5
+                              rounded-full
+                              text-xs
+
+                              bg-red-500/10
+                              text-red-500
+                              dark:text-red-400
+
+                              border
+                              border-red-500/20
+                            ">
+
+                              {record.status}
+
+                            </span>
+
+                          </td>
+
+                        </tr>
+
+                      ))}
+
+                    </tbody>
+
+                  </table>
+
+                </div>
+
+              </div>
+
+            </>
+          )
+        }
 
       </div>
 

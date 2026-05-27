@@ -1,14 +1,26 @@
-import Sidebar from "../components/Sidebar";
+import { useState } from "react";
 
-import Topbar from "../components/Topbar";
+import Sidebar
+from "../components/Sidebar";
+
+import Topbar
+from "../components/Topbar";
 
 
 function DashboardLayout({
+
   children,
+
   organizations,
+
   selectedOrg,
+
   setSelectedOrg
+
 }) {
+
+  const [sidebarOpen, setSidebarOpen] =
+    useState(true);
 
   return (
 
@@ -26,7 +38,13 @@ function DashboardLayout({
       duration-500
     ">
 
-      <Sidebar />
+      {
+        sidebarOpen && (
+
+          <Sidebar />
+
+        )
+      }
 
       <div className="
         flex-1
@@ -35,13 +53,26 @@ function DashboardLayout({
       ">
 
         <Topbar
+
           organizations={organizations}
+
           selectedOrg={selectedOrg}
-          setSelectedOrg={setSelectedOrg}
+
+          setSelectedOrg={
+            setSelectedOrg
+          }
+
+          toggleSidebar={() =>
+            setSidebarOpen(
+              !sidebarOpen
+            )
+          }
+
         />
 
         <main className="
           p-6
+
           transition-colors
           duration-500
         ">

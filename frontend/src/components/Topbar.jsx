@@ -1,16 +1,30 @@
 import {
   Moon,
-  Sun
+  Sun,
+  Menu
 } from "lucide-react";
 
-import { useTheme } from "../context/ThemeContext";
+import {
+  useNavigate
+} from "react-router-dom";
+
+import { useTheme }
+from "../context/ThemeContext";
 
 
 function Topbar({
+
   organizations,
+
   selectedOrg,
-  setSelectedOrg
+
+  setSelectedOrg,
+
+  toggleSidebar
+
 }) {
+
+  const navigate = useNavigate();
 
   const {
     theme,
@@ -21,41 +35,80 @@ function Topbar({
 
     <header className="
       h-20
+
       border-b
-      border-zinc-800
+      border-zinc-200
       dark:border-zinc-800
+
       bg-white/80
       dark:bg-zinc-900/50
+
       backdrop-blur-xl
+
       px-6
+
       flex
       items-center
       justify-between
+
       transition-colors
     ">
 
-      <div>
+      <div className="
+        flex
+        items-center
+        gap-4
+      ">
 
-        <h2 className="
-          text-2xl
-          font-semibold
-          text-zinc-900
-          dark:text-white
-        ">
+        <button
 
-          ESG Dashboard
+          onClick={toggleSidebar}
 
-        </h2>
+          className="
+            p-3
 
-        <p className="
-          text-zinc-500
-          dark:text-zinc-400
-          text-sm
-        ">
+            rounded-xl
 
-          Sustainability analytics overview
+            bg-zinc-100
+            dark:bg-zinc-800
 
-        </p>
+            hover:bg-zinc-200
+            dark:hover:bg-zinc-700
+
+            transition-all
+          "
+        >
+
+          <Menu size={20} />
+
+        </button>
+
+        <div>
+
+          <h2 className="
+            text-2xl
+            font-semibold
+
+            text-zinc-900
+            dark:text-white
+          ">
+
+            ESG Dashboard
+
+          </h2>
+
+          <p className="
+            text-zinc-500
+            dark:text-zinc-400
+
+            text-sm
+          ">
+
+            Sustainability analytics overview
+
+          </p>
+
+        </div>
 
       </div>
 
@@ -66,30 +119,51 @@ function Topbar({
       ">
 
         <select
+
           value={selectedOrg}
+
           onChange={(e) => {
 
+            if (
+              e.target.value ===
+              "add_new"
+            ) {
+
+              navigate(
+                "/organizations"
+              );
+
+              return;
+            }
+
             setSelectedOrg(
-                e.target.value
+              e.target.value
             );
 
             localStorage.setItem(
-                "selectedOrg",
-                e.target.value
+              "selectedOrg",
+              e.target.value
             );
 
-            }}
+          }}
+
           className="
             bg-zinc-100
             dark:bg-zinc-800
+
             border
             border-zinc-300
             dark:border-zinc-700
+
             rounded-xl
+
             px-4
             py-2
+
             text-sm
+
             outline-none
+
             text-zinc-900
             dark:text-white
           "
@@ -101,28 +175,44 @@ function Topbar({
               key={org.id}
               value={org.id}
             >
+
               {org.name}
+
             </option>
 
           ))}
 
+          <option value="add_new">
+
+            + Add Organization
+
+          </option>
+
         </select>
 
         <button
+
           onClick={toggleTheme}
+
           className="
             p-3
+
             rounded-xl
+
             bg-zinc-100
             dark:bg-zinc-800
+
             hover:bg-zinc-200
             dark:hover:bg-zinc-700
+
             transition-all
           "
         >
 
           {theme === "dark"
+
             ? <Sun size={18} />
+
             : <Moon size={18} />
           }
 
